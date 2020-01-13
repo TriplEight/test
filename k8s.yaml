@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: substrate
+  labels:
+    version: v1
+spec:
+  selector:
+    matchLabels:
+      app: substrate
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: substrate
+    spec:
+      containers:
+        - name: substrate
+          image: parity/substrate:2.0.0-31c633c47
+          imagePullPolicy: Always
+          args: ["--dev", "--ws-external", "--rpc-external"]
