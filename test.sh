@@ -2,7 +2,7 @@
 
 getBlockHeight () {
 
-hexHeight=`curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "chain_getBlock"}' localhost:9933 | jq -r .result.block.header.number`
+hexHeight=`curl -s -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "chain_getBlock"}' localhost:9933 | jq -r .result.block.header.number`
 
 height=$(( $hexHeight ))
 }
